@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coding Practice · CampusExam</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/practice.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/practice.js" defer></script>
+</head>
+<body>
+  <div class="mobile-overlay"></div>
+  <aside class="sidebar" aria-label="Practice navigation">
+    <a class="brand" href="student-dashboard.html"><span class="brand-mark">C</span><span>CampusExam</span></a>
+    <div class="nav-label">Learning</div>
+    <nav class="sidebar-nav"><a href="student-dashboard.html"><span data-icon="grid"></span>Student Overview</a><a class="active" href="practice.html"><span data-icon="code"></span>Practice Zone</a><a href="student-dashboard.html#exams"><span data-icon="book"></span>My Exams</a></nav>
+    <div class="sidebar-bottom"><div class="demo-note"><span data-icon="help"></span><span>Code is edited locally and is not compiled or executed.</span></div><nav class="sidebar-nav"><a class="logout-link" href="login.html" data-logout><span data-icon="logout"></span>Logout</a></nav></div>
+  </aside>
+  <main class="main-workspace">
+    <header class="topbar"><div class="topbar-left"><button class="icon-btn mobile-menu" type="button" aria-label="Open navigation menu"><span data-icon="menu"></span></button><div class="practice-crumb"><a href="student-dashboard.html">Student workspace</a><span>/</span><strong>Practice Zone</strong></div></div><div class="topbar-right"><button class="icon-btn" type="button" aria-label="Notifications" data-notifications><span data-icon="bell"></span></button><button class="profile-button" type="button" data-profile><span class="avatar" data-session-initials>ST</span><span class="profile-meta"><strong data-session-name>Student</strong><span>Student</span></span></button></div></header>
+    <div class="page-content practice-content">
+      <section class="welcome-row"><div><span class="eyebrow">Learn by doing</span><h1>Coding practice</h1><p>Practice exercises assigned to you will appear here.</p></div></section>
+      <div class="demo-note" style="margin-bottom:17px"><span data-icon="help"></span><span>This editor does not compile or execute Java, Python, or C++ code. Add an exercise before using the practice controls.</span></div>
+      <div class="practice-layout">
+        <aside class="card challenge-panel">
+          <div class="challenge-heading"><div><h2>Challenges</h2><p>Assigned practice exercises.</p></div><span data-icon="file"></span></div>
+          <div class="difficulty-filters" role="group" aria-label="Filter challenge difficulty"><button class="active" data-difficulty="All" type="button">All</button><button data-difficulty="Easy" type="button">Easy</button><button data-difficulty="Medium" type="button">Medium</button><button data-difficulty="Hard" type="button">Hard</button></div>
+          <div class="challenge-list" id="challenge-list"></div>
+        </aside>
+        <section class="practice-main">
+          <article class="card challenge-description">
+            <div class="challenge-description-top"><div><span class="badge badge-gray" id="challenge-difficulty">No exercise</span><h2 id="challenge-title">No exercises available</h2></div><span class="challenge-points" id="challenge-points"></span></div>
+            <p id="challenge-description">When an exercise is assigned, its instructions will appear here.</p>
+            <div class="sample-io"><div><strong>Subject</strong><code id="exercise-subject">—</code></div><div><strong>Test cases</strong><code id="exercise-tests">None assigned</code></div></div>
+          </article>
+          <section class="card editor-card">
+            <div class="editor-toolbar"><div class="editor-label"><span class="editor-dot"></span><strong>Solution</strong></div><label class="language-picker" for="language-select"><span>Language</span><select id="language-select"><option>Java</option><option>Python</option><option>C++</option></select></label></div>
+            <div class="editor-wrap"><pre class="highlight-layer" aria-hidden="true"><code id="highlighted-code"></code></pre><textarea id="code-editor" spellcheck="false" aria-label="Code editor" autocomplete="off" autocapitalize="off"></textarea></div>
+            <div class="editor-footer"><span>Tab to indent · Ctrl/⌘ + Enter to simulate run</span><div><button class="btn btn-secondary btn-sm" id="clear-code" type="button">Clear</button><button class="btn btn-secondary btn-sm" id="reset-code" type="button">Reset</button><button class="btn btn-secondary btn-sm" id="run-code" type="button"><span data-icon="code"></span>Run code</button><button class="btn btn-primary btn-sm" id="submit-solution" type="button">Submit solution</button></div></div>
+          </section>
+          <section class="card test-results">
+            <div class="section-heading"><div><h2>Run &amp; submit</h2><p id="test-summary">Results will appear after an exercise is assigned.</p></div><span class="badge badge-gray" id="test-status">No exercise</span></div>
+            <div id="test-cases" class="test-case-list"><div class="empty-state">No exercise selected.</div></div>
+          </section>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

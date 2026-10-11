@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard · CampusExam</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/admin.js" defer></script>
+</head>
+<body>
+  <div class="mobile-overlay"></div>
+  <aside class="sidebar" aria-label="Administrator navigation">
+    <a class="brand" href="admin-dashboard.html"><span class="brand-mark">C</span><span>CampusExam</span></a>
+    <div class="nav-label">Administration</div>
+    <nav class="sidebar-nav">
+      <a class="active" href="#overview"><span data-icon="grid"></span>Overview</a>
+      <a href="#students"><span data-icon="users"></span>Student Management</a>
+      <a href="#faculty"><span data-icon="user"></span>Faculty Management</a>
+      <a href="#departments"><span data-icon="book"></span>Departments &amp; Subjects</a>
+      <a href="#examinations"><span data-icon="calendar"></span>Examination Overview</a>
+      <a href="#activity"><span data-icon="chart"></span>Activity Logs</a>
+      <a href="#roles"><span data-icon="help"></span>Demo Role Assignments</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="demo-note"><span data-icon="help"></span><span>Administrator actions are saved only in this browser.</span></div><nav class="sidebar-nav"><a class="logout-link" href="login.html" data-logout><span data-icon="logout"></span>Logout</a></nav></div>
+  </aside>
+  <main class="main-workspace">
+    <header class="topbar"><div class="topbar-left"><button class="icon-btn mobile-menu" type="button" aria-label="Open navigation menu"><span data-icon="menu"></span></button><div class="search-box"><span data-icon="search"></span><input id="global-search" type="search" placeholder="Search people and records…" aria-label="Search admin records"></div></div><div class="topbar-right"><button class="icon-btn" type="button" aria-label="Notifications" data-notifications><span data-icon="bell"></span></button><button class="profile-button" type="button" data-profile aria-label="Go to admin profile"><span class="avatar" data-session-initials>AD</span><span class="profile-meta"><strong data-session-name>Admin</strong><span>Administrator</span></span></button></div></header>
+    <div class="page-content">
+      <section class="welcome-row section-view" id="overview" data-page="overview"><div><span class="eyebrow">Administration</span><h1>Campus overview</h1><p>Keep your college examination workspace organized.</p></div><span class="badge badge-blue">Admin workspace</span></section>
+      <div class="demo-note section-view" data-page="overview"><span data-icon="help"></span><span>Your workspace starts empty. Records you add are stored locally in this browser.</span></div>
+      <section class="stats-grid section-view" aria-label="Portal summary" data-page="overview">
+        <article class="card stat-card"><div class="stat-top"><span>Total students</span><span class="stat-icon" data-icon="users"></span></div><strong id="total-students">0</strong><div class="stat-foot">Registered students</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Total faculty</span><span class="stat-icon" data-icon="user"></span></div><strong id="total-faculty">0</strong><div class="stat-foot">Teaching staff</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Total exams</span><span class="stat-icon" data-icon="calendar"></span></div><strong id="total-exams">0</strong><div class="stat-foot">Scheduled and completed</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Active courses</span><span class="stat-icon" data-icon="book"></span></div><strong id="total-subjects">0</strong><div class="stat-foot">Subjects in the catalog</div></article>
+      </section>
+      <section class="section-view" id="students" data-page="students">
+        <div class="section-heading"><div><h2>Student management</h2><p>Search the student roster or add/remove records.</p></div><button class="btn btn-primary btn-sm" type="button" id="add-student"><span data-icon="plus"></span>Add student</button></div>
+        <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Student ID</th><th>Name</th><th>Class</th><th>Exam status</th><th>Action</th></tr></thead><tbody id="admin-student-rows"></tbody></table></div><div class="empty-state" id="admin-student-empty" hidden>No students found.</div></div>
+      </section>
+      <section class="section-view" id="faculty" data-page="faculty">
+        <div class="section-heading"><div><h2>Faculty management</h2><p>Manage teaching staff and departments.</p></div><button class="btn btn-primary btn-sm" type="button" id="add-faculty"><span data-icon="plus"></span>Add faculty</button></div>
+        <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Faculty ID</th><th>Name</th><th>Department</th><th>Email</th><th>Action</th></tr></thead><tbody id="admin-faculty-rows"></tbody></table></div><div class="empty-state" id="admin-faculty-empty" hidden>No faculty found.</div></div>
+      </section>
+      <section class="section-view" id="departments" data-page="departments">
+        <div class="section-heading"><div><h2>Departments &amp; subjects</h2><p>Manage course catalog entries in this browser.</p></div></div>
+        <div class="content-grid">
+          <form class="card form-card" id="department-form"><div class="field"><label for="department-name">Add a department</label><input id="department-name" name="name" required maxlength="70" placeholder="e.g. Information Technology"></div><div class="form-actions"><button class="btn btn-primary" type="submit">Add department</button></div><div class="divider" style="margin:18px 0"></div><div id="department-list" class="activity-list"></div></form>
+          <form class="card form-card" id="subject-form"><div class="field"><label for="subject-name">Add an active subject</label><input id="subject-name" name="name" required maxlength="70" placeholder="e.g. Computer Architecture"></div><div class="form-actions"><button class="btn btn-primary" type="submit">Add subject</button></div><div class="divider" style="margin:18px 0"></div><div id="subject-list" class="activity-list"></div></form>
+        </div>
+      </section>
+      <section class="section-view" id="examinations" data-page="examinations">
+        <div class="section-heading"><div><h2>Examination overview</h2><p>Exam schedule shared with faculty and students.</p></div></div>
+        <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Exam</th><th>Subject</th><th>Date</th><th>Duration</th><th>Class</th><th>Status</th></tr></thead><tbody id="admin-exam-rows"></tbody></table></div></div>
+      </section>
+      <section class="section-view" id="activity" data-page="activity">
+        <div class="section-heading"><div><h2>Recent activity logs</h2><p>Administrator actions performed in this browser.</p></div></div>
+        <div class="card panel activity-list" id="activity-list"></div>
+      </section>
+      <section class="section-view" id="roles" data-page="roles">
+        <div class="section-heading"><div><h2>Demo role assignments</h2><p>Change which demonstration dashboard each sample email opens.</p></div></div>
+        <div class="demo-note" style="margin-bottom:14px"><span data-icon="help"></span><span>These role assignments only affect the login redirect in this browser. They are not real authorization controls.</span></div>
+        <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Demo account</th><th>Assigned role</th><th>Dashboard destination</th></tr></thead><tbody id="role-rows"></tbody></table></div></div>
+      </section>
+      <footer class="dashboard-footer">CampusExam · Administrator workspace · Local demonstration data only</footer>
+    </div>
+  </main>
+</body>
+</html>

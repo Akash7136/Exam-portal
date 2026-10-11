@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Dashboard · CampusExam</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/student.js" defer></script>
+</head>
+<body>
+  <div class="mobile-overlay"></div>
+  <aside class="sidebar" aria-label="Student navigation">
+    <a class="brand" href="student-dashboard.html"><span class="brand-mark">C</span><span>CampusExam</span></a>
+    <div class="nav-label">Workspace</div>
+    <nav class="sidebar-nav">
+      <a class="active" href="#overview"><span data-icon="grid"></span>Overview</a>
+      <a href="#exams"><span data-icon="book"></span>My Exams</a>
+      <a href="practice.html"><span data-icon="code"></span>Practice Zone</a>
+      <a href="#schedule"><span data-icon="calendar"></span>Exam Schedule</a>
+      <a href="#results"><span data-icon="chart"></span>Results &amp; Analytics</a>
+      <a href="#leaderboard"><span data-icon="users"></span>Leaderboard</a>
+      <a href="#notifications"><span data-icon="bell"></span>Notifications</a>
+      <a href="#profile"><span data-icon="user"></span>My Profile</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="demo-note"><span data-icon="help"></span><span>Access your exams, results, and learning tools.</span></div>
+      <nav class="sidebar-nav"><a class="logout-link" href="login.html" data-logout><span data-icon="logout"></span>Logout</a></nav>
+    </div>
+  </aside>
+  <main class="main-workspace">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn mobile-menu" type="button" aria-label="Open navigation menu"><span data-icon="menu"></span></button>
+        <div class="search-box"><span data-icon="search"></span><input id="global-search" type="search" placeholder="Search exams and results…" aria-label="Search dashboard"></div>
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn" type="button" aria-label="Notifications" data-notifications><span data-icon="bell"></span></button>
+        <button class="profile-button" type="button" data-profile aria-label="Go to my profile">
+          <img class="avatar avatar-image" src="assets/student-avatar.svg" alt="3D-style male student profile">
+          <span class="profile-meta"><strong data-session-name>Student</strong><span>Student</span></span>
+        </button>
+      </div>
+    </header>
+    <div class="page-content">
+      <section class="welcome-row section-view" id="overview" data-page="overview">
+        <div><span class="eyebrow">Student workspace</span><h1>Welcome, <span data-session-name>Student</span></h1><p>Your learning overview and examination activity.</p></div>
+        <span class="badge badge-blue">Student workspace</span>
+      </section>
+      <div class="demo-note section-view" data-page="overview"><span data-icon="help"></span><span>Your dashboard is ready. Exams, results, and activities will appear here when they are added.</span></div>
+      <section class="stats-grid section-view student-stats-grid" aria-label="Student summary" data-page="overview">
+        <article class="card stat-card"><div class="stat-top"><span>Upcoming exams</span><span class="stat-icon" data-icon="calendar"></span></div><strong id="upcoming-count">0</strong><div class="stat-foot">No upcoming exams</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Completed exams</span><span class="stat-icon" data-icon="check"></span></div><strong id="completed-count">0</strong><div class="stat-foot">No completed exams</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Average score</span><span class="stat-icon" data-icon="chart"></span></div><strong id="average-score">—</strong><div class="stat-foot">Across all recorded results</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Best score</span><span class="stat-icon" data-icon="check"></span></div><strong id="best-score">—</strong><div class="stat-foot">Your highest exam score</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Problems solved</span><span class="stat-icon" data-icon="code"></span></div><strong id="solved-count">0</strong><div class="stat-foot">Practice solutions saved</div></article>
+        <article class="card stat-card streak-card"><div class="stat-top"><span>Learning streak</span><span class="stat-icon streak-icon" aria-hidden="true">🔥</span></div><strong id="learning-streak">0-day streak</strong><div class="stat-foot" id="streak-caption">Complete a practice activity to begin</div></article>
+      </section>
+      <div class="content-grid" data-page-layout>
+        <section class="card panel section-view" id="exams" data-page="exams">
+          <div class="section-heading"><div><h2>Upcoming examinations</h2><p>Stay on top of what’s coming up.</p></div><a class="btn btn-secondary btn-sm" href="#schedule">View schedule</a></div>
+          <div class="exam-list" id="upcoming-exams"><div class="empty-state">No upcoming exams.</div></div>
+        </section>
+        <section class="card panel section-view" id="results" data-page="results">
+          <div class="section-heading"><div><h2>Recent results</h2><p>Your latest assessment scores.</p></div></div>
+          <div class="result-list" id="recent-results"><div class="empty-state">No results yet.</div></div>
+        </section>
+      </div>
+      <div class="content-grid" data-page-layout>
+        <section class="card panel section-view" id="analytics" data-page="overview">
+          <div class="section-heading"><div><h2>My Performance</h2><p>Your exam scores over time.</p></div><div class="performance-legend"><span class="chart-legend">Score (%)</span><span class="badge badge-gray" id="performance-trend">Awaiting results</span></div></div>
+          <div id="performance-chart"><div class="empty-state">Your performance graph will appear after results are available.</div></div>
+        </section>
+        <section class="card panel section-view" id="activity" data-page="overview">
+          <div class="section-heading"><div><h2>Recent activity</h2><p>Your latest learning milestones.</p></div></div>
+          <div class="activity-list"><div class="empty-state">No recent activity.</div></div>
+        </section>
+      </div>
+      <section class="section-view" id="schedule" data-page="schedule">
+        <div class="section-heading"><div><h2>Exam schedule</h2><p>Published examinations will appear here.</p></div></div>
+        <div class="quick-links" id="exam-schedule-list"><div class="card empty-state">No exams scheduled.</div></div>
+      </section>
+      <section class="section-view" id="leaderboard" data-page="leaderboard">
+        <div class="section-heading"><div><h2>Leaderboard</h2><p>Leaderboard standings will appear when results are available.</p></div></div>
+        <div class="card empty-state">No leaderboard data available.</div>
+      </section>
+      <section class="section-view" id="notifications" data-page="notifications">
+        <div class="section-heading"><div><h2>Notifications</h2><p>Recent notices for your account.</p></div></div>
+        <article class="card panel"><div class="empty-state">No notifications.</div></article>
+      </section>
+      <section class="section-view" id="profile" data-page="profile">
+        <div class="section-heading"><div><h2>My profile</h2><p>Account details.</p></div></div>
+        <article class="card panel profile-card">
+          <img class="profile-portrait" src="assets/student-avatar.svg" alt="3D-style male student profile">
+          <div class="profile-card-details"><p><strong data-session-name>Student</strong> <span class="badge badge-blue">Student</span></p><span class="profile-email" data-session-email>Student account</span></div>
+          <button class="btn btn-secondary btn-sm" type="button" data-logout>Log out</button>
+        </article>
+      </section>
+      <div class="section-view" id="practice" data-page="overview"><div class="section-heading"><div><h2>Practice Zone</h2><p>Build your skills with coding challenges.</p></div><a class="btn btn-primary btn-sm" href="practice.html">Open practice zone</a></div></div>
+      <footer class="dashboard-footer">CampusExam · Student workspace</footer>
+    </div>
+  </main>
+</body>
+</html>

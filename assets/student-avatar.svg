@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title">
+  <title id="title">3D-style male student portrait</title>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9edff"/>
+      <stop offset="1" stop-color="#cdd5ff"/>
+    </linearGradient>
+    <linearGradient id="skin" x1=".18" y1=".1" x2=".82" y2=".95">
+      <stop offset="0" stop-color="#ffd8b7"/>
+      <stop offset="1" stop-color="#e9a978"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6475ff"/>
+      <stop offset="1" stop-color="#3547d7"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#35405f"/>
+      <stop offset="1" stop-color="#172039"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#3544a5" flood-opacity=".2"/>
+    </filter>
+  </defs>
+  <rect width="160" height="160" rx="38" fill="url(#background)"/>
+  <circle cx="126" cy="34" r="17" fill="#fff" opacity=".48"/>
+  <path d="M23 160c4-31 24-48 57-48s53 17 57 48" fill="url(#shirt)"/>
+  <path d="M66 106h28v20c-8 10-20 10-28 0z" fill="#d99468"/>
+  <g filter="url(#shadow)">
+    <path d="M48 70c0-25 13-41 33-41s33 16 33 41v15c0 23-14 39-33 39S48 108 48 85z" fill="url(#skin)"/>
+    <path d="M47 70c-3-24 10-43 31-46 18-3 34 6 39 23 3 8 2 17 0 25-5-4-9-10-11-17-14 9-30 12-48 10l-1 9-7 7z" fill="url(#hair)"/>
+    <path d="M52 61c7-16 22-25 42-24 9 1 16 5 21 11-5-18-19-27-37-24-18 3-29 17-26 37z" fill="#59627f" opacity=".38"/>
+    <path d="M61 78c4-3 9-3 13 0m15 0c4-3 9-3 13 0" fill="none" stroke="#694a42" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse cx="68" cy="85" rx="3" ry="4" fill="#26314e"/>
+    <ellipse cx="96" cy="85" rx="3" ry="4" fill="#26314e"/>
+    <path d="M78 91c-1 5-3 9-1 10 2 2 5 2 7 0" fill="none" stroke="#cf8b67" stroke-width="2" stroke-linecap="round"/>
+    <path d="M72 105c5 5 14 5 20 0" fill="none" stroke="#a94f50" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M47 76c-4-2-7 1-6 7 1 6 4 10 8 10m73-17c4-2 7 1 6 7-1 6-4 10-8 10" fill="url(#skin)"/>
+  </g>
+  <path d="M67 117l13 13 13-13 12 5-12 38H67l-12-38z" fill="#fff" opacity=".94"/>
+  <path d="m80 130 8 8-8 19-8-19z" fill="#4353f5"/>
+</svg>

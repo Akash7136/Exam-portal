@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faculty Dashboard · CampusExam</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/faculty.js" defer></script>
+</head>
+<body>
+  <div class="mobile-overlay"></div>
+  <aside class="sidebar" aria-label="Faculty navigation">
+    <a class="brand" href="faculty-dashboard.html"><span class="brand-mark">C</span><span>CampusExam</span></a>
+    <div class="nav-label">Faculty workspace</div>
+    <nav class="sidebar-nav">
+      <a class="active" href="#overview"><span data-icon="grid"></span>Overview</a>
+      <a href="#create-exam"><span data-icon="plus"></span>Create Exam</a>
+      <a href="#question-bank"><span data-icon="book"></span>Question Bank</a>
+      <a href="#students"><span data-icon="users"></span>Student Management</a>
+      <a href="#submissions"><span data-icon="file"></span>Submissions</a>
+      <a href="#reports"><span data-icon="chart"></span>Results &amp; Reports</a>
+      <a href="#exam-schedule"><span data-icon="calendar"></span>Exam Schedule</a>
+      <a href="#announcements"><span data-icon="bell"></span>Announcements</a>
+      <a href="#profile"><span data-icon="user"></span>Profile</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="demo-note"><span data-icon="help"></span><span>Faculty tools update this browser’s local data.</span></div><nav class="sidebar-nav"><a class="logout-link" href="login.html" data-logout><span data-icon="logout"></span>Logout</a></nav></div>
+  </aside>
+  <main class="main-workspace">
+    <header class="topbar"><div class="topbar-left"><button class="icon-btn mobile-menu" type="button" aria-label="Open navigation menu"><span data-icon="menu"></span></button><div class="search-box"><span data-icon="search"></span><input id="global-search" type="search" placeholder="Search your workspace…" aria-label="Search faculty workspace"></div></div><div class="topbar-right"><button class="icon-btn" type="button" aria-label="Notifications" data-notifications><span data-icon="bell"></span></button><button class="profile-button" type="button" data-profile aria-label="Go to profile"><span class="avatar" data-session-initials>FA</span><span class="profile-meta"><strong data-session-name>Faculty</strong><span>Faculty</span></span></button></div></header>
+    <div class="page-content">
+      <section class="welcome-row section-view" id="overview" data-page="overview"><div><span class="eyebrow">Faculty workspace</span><h1>Welcome, <span data-session-name>Faculty</span></h1><p>Manage assessments and support your students.</p></div><button class="btn btn-primary" type="button" data-scroll="#create-exam"><span data-icon="plus"></span>Create an exam</button></section>
+      <div class="demo-note section-view" data-page="overview"><span data-icon="help"></span><span>Your workspace starts empty. Records you add are stored in this browser.</span></div>
+      <section class="stats-grid section-view" aria-label="Faculty overview metrics" data-page="overview">
+        <article class="card stat-card"><div class="stat-top"><span>Created exams</span><span class="stat-icon" data-icon="book"></span></div><strong id="stat-exams">0</strong><div class="stat-foot">Exams you create</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Assigned students</span><span class="stat-icon" data-icon="users"></span></div><strong id="stat-students">0</strong><div class="stat-foot">Students in your classes</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Question bank</span><span class="stat-icon" data-icon="file"></span></div><strong id="stat-questions">0</strong><div class="stat-foot">Questions you add</div></article>
+        <article class="card stat-card"><div class="stat-top"><span>Pending reviews</span><span class="stat-icon" data-icon="chart"></span></div><strong id="stat-reviews">0</strong><div class="stat-foot">Submissions awaiting a mark</div></article>
+      </section>
+      <section class="section-view" id="create-exam" data-page="create-exam">
+        <div class="section-heading"><div><h2>Create an exam</h2><p>Create a new exam for your class.</p></div></div>
+        <form class="card form-card" id="exam-form">
+          <div class="field-grid">
+            <div class="field"><label for="exam-title">Exam title</label><input id="exam-title" name="title" required maxlength="90" placeholder="e.g. Operating Systems Midterm"></div>
+            <div class="field"><label for="exam-subject">Subject</label><input id="exam-subject" name="subject" required maxlength="70" placeholder="e.g. Computer Science"></div>
+            <div class="field span-2"><label for="exam-description">Description</label><textarea id="exam-description" name="description" rows="2" maxlength="300" placeholder="Short overview of the assessment"></textarea></div>
+            <div class="field span-2"><label for="exam-instructions">Instructions</label><textarea id="exam-instructions" name="instructions" rows="2" maxlength="500" placeholder="Instructions students should read before starting"></textarea></div>
+            <div class="field"><label for="exam-date">Date</label><input id="exam-date" name="date" type="date" required></div>
+            <div class="field"><label for="exam-time">Start time</label><input id="exam-time" name="time" type="time" required></div>
+            <div class="field"><label for="exam-duration">Duration (minutes)</label><input id="exam-duration" name="duration" type="number" min="1" max="600" required></div>
+            <div class="field"><label for="exam-marks">Total marks</label><input id="exam-marks" name="marks" type="number" min="1" max="1000" required></div>
+            <div class="field"><label for="exam-type">Question type</label><select id="exam-type" name="questionType"><option>MCQ</option><option>Multiple-select</option><option>Short-answer</option><option>Descriptive</option><option>Programming</option><option>Mixed</option></select></div>
+            <div class="field"><label for="exam-class">Assigned class</label><input id="exam-class" name="className" required maxlength="80" placeholder="Class or section"></div>
+          </div>
+          <div class="form-actions"><button class="btn btn-secondary" type="reset">Clear form</button><button class="btn btn-secondary" name="intent" value="Draft" type="submit">Save draft</button><button class="btn btn-primary" name="intent" value="Published" type="submit">Publish exam</button></div>
+        </form>
+      </section>
+      <section class="section-view" id="question-bank" data-page="question-bank">
+        <div class="section-heading"><div><h2>Question bank</h2><p>Add, find, edit, and remove questions.</p></div></div>
+        <form class="card form-card" id="question-form">
+          <div class="field-grid"><div class="field"><label for="question-prompt">Question</label><input id="question-prompt" name="prompt" required maxlength="280" placeholder="Write a question prompt"></div><div class="field"><label for="question-subject">Subject</label><input id="question-subject" name="subject" required maxlength="70" placeholder="e.g. Algorithms"></div><div class="field"><label for="question-type">Question type</label><select id="question-type" name="type"><option>MCQ</option><option>Multiple-select</option><option>Short-answer</option><option>Descriptive</option><option>Programming</option></select></div><div class="field"><label for="question-difficulty">Difficulty</label><select id="question-difficulty" name="difficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select></div></div>
+          <div class="form-actions"><button class="btn btn-primary" type="submit"><span data-icon="plus"></span>Add question</button></div>
+        </form>
+        <div class="toolbar" style="margin-top:16px"><div class="search-box"><span data-icon="search"></span><input id="question-search" type="search" placeholder="Search questions…" aria-label="Search questions"></div><select id="question-filter" aria-label="Filter question type"><option value="">All question types</option><option>MCQ</option><option>Multiple-select</option><option>Short-answer</option><option>Descriptive</option><option>Programming</option></select></div>
+        <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Question</th><th>Subject</th><th>Type</th><th>Difficulty</th><th>Actions</th></tr></thead><tbody id="question-rows"></tbody></table></div><div class="empty-state" id="question-empty" hidden>No questions match. Add a new one above.</div></div>
+      </section>
+      <section class="section-view" id="students" data-page="students">
+        <div class="section-heading"><div><h2>Student management</h2><p>Manage student records and exam status.</p></div><select id="student-status-filter" aria-label="Filter by exam status"><option value="">All statuses</option><option>Upcoming</option><option>Completed</option><option>In progress</option></select></div>
+        <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Student ID</th><th>Name</th><th>Class</th><th>Exam status</th></tr></thead><tbody id="student-rows"></tbody></table></div><div class="empty-state" id="student-empty" hidden>No students match this filter.</div></div>
+      </section>
+      <section class="section-view" id="submissions" data-page="submissions">
+        <div class="section-heading"><div><h2>Submissions &amp; grading</h2><p>Adjust demo marks and save review status.</p></div><button class="btn btn-secondary btn-sm" id="export-csv" type="button">Export CSV</button></div>
+        <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Student</th><th>Exam</th><th>Submitted</th><th>Marks</th><th>Review</th><th>Action</th></tr></thead><tbody id="submission-rows"></tbody></table></div></div>
+      </section>
+      <section class="section-view" id="reports" data-page="reports">
+        <div class="section-heading"><div><h2>Results &amp; reports</h2><p>Record reviewed exam results and track submission status.</p></div></div>
+        <form class="card form-card" id="result-form">
+          <div class="section-heading"><div><h3>Record an exam result</h3><p>Saved results appear in student performance analytics.</p></div></div>
+          <div class="field-grid">
+            <div class="field"><label for="result-student">Student name</label><input id="result-student" name="student" required maxlength="100" placeholder="Student name"></div>
+            <div class="field"><label for="result-exam">Exam name</label><input id="result-exam" name="exam" required maxlength="100" placeholder="Exam name"></div>
+            <div class="field"><label for="result-date">Exam date</label><input id="result-date" name="date" type="date" required></div>
+            <div class="field-grid"><div class="field"><label for="result-score">Score</label><input id="result-score" name="score" type="number" min="0" step="1" required></div><div class="field"><label for="result-total">Total marks</label><input id="result-total" name="total" type="number" min="1" step="1" required></div></div>
+          </div>
+          <div class="form-actions"><button class="btn btn-primary" type="submit">Save result</button></div>
+        </form>
+        <div class="content-grid"><article class="card panel"><div class="section-heading"><div><h3>Assessment results</h3><p>Exam submissions and marks</p></div></div><div class="result-list" id="report-list"></div></article><article class="card panel"><div class="section-heading"><div><h3>Review progress</h3><p>Submissions awaiting review</p></div></div><strong style="font-size:30px" id="report-pending">0</strong><p class="muted">submissions pending review</p><a class="btn btn-primary btn-sm" href="#submissions">Review submissions</a></article></div>
+      </section>
+      <section class="section-view" id="exam-schedule" data-page="exam-schedule">
+        <div class="section-heading"><div><h2>Exam schedule</h2><p>Scheduled and draft exams you manage.</p></div></div>
+        <div class="card table-card"><div class="table-wrap"><table><thead><tr><th>Exam</th><th>Subject</th><th>Date</th><th>Duration</th><th>Class</th><th>Status</th></tr></thead><tbody id="exam-rows"></tbody></table></div></div>
+      </section>
+      <section class="section-view" id="announcements" data-page="announcements">
+        <div class="section-heading"><div><h2>Announcements</h2><p>Create and maintain class notices.</p></div></div>
+        <form class="card form-card" id="announcement-form"><div class="field-grid"><div class="field"><label for="announcement-title">Announcement title</label><input id="announcement-title" name="title" required maxlength="100" placeholder="e.g. Revision session moved"></div><div class="field"><label for="announcement-body">Message</label><input id="announcement-body" name="body" required maxlength="300" placeholder="Add a short update for your class"></div></div><div class="form-actions"><button class="btn btn-primary" type="submit">Post announcement</button></div></form>
+        <div class="activity-list card panel" style="margin-top:14px" id="announcement-list"></div>
+      </section>
+      <section class="section-view" id="profile" data-page="profile"><div class="section-heading"><div><h2>Faculty profile</h2><p>Account details.</p></div></div><article class="card panel"><p><strong data-session-name>Faculty</strong> <span class="badge badge-blue">Faculty</span></p><button class="btn btn-secondary btn-sm" type="button" data-logout>Log out</button></article></section>
+      <footer class="dashboard-footer">CampusExam · Faculty workspace</footer>
+    </div>
+  </main>
+</body>
+</html>
